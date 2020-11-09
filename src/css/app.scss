@@ -1,0 +1,41 @@
+// app global css in Sass form
+
+.my-hover-shadow:hover {
+  box-shadow: $shadow-3;
+  background-color: $lightBgColor;
+}
+
+.current-contact-active {
+  color: white;
+  background-color: $primaryShadeLight;
+}
+
+.current-contact-active:hover {
+  color: white;
+  background-color: $primaryShadeLight;
+}
+
+.thick-border {
+  border: 1px solid grey;
+}
+
+/* scrollbars */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 7px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px $primary;
+  border-radius: 3px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $primary;
+  border-radius: 3px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $primary;
+}
