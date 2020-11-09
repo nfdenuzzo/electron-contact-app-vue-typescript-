@@ -112,6 +112,7 @@ export default Vue.extend({
               color: 'negative'
             });
           }
+          this.clearIntervals();
           this.btnLoading = false;
         })
         .catch((err: PromiseRejectionEvent) => console.log('errorr', err))
@@ -126,11 +127,7 @@ export default Vue.extend({
         : this.$q.localStorage.getItem('previousFileUrl');
       const result = await fileOpen(filePath, password);
       if (result && result.status === 200) {
-        await this.$store
-          .dispatch('saveFileContentsOpened', result)
-          .catch((err: PromiseRejectionEvent) => {
-            console.log('err', err);
-          });
+        await this.$store.dispatch('saveFileContentsOpened', result)
         this.$q.localStorage.remove('previousFileUrl');
         this.$q.localStorage.set('previousFileUrl', result.filePath);
         this.$emit('update:viewPasswordPrompt', false);
@@ -152,6 +149,11 @@ export default Vue.extend({
     },
     closeDialog(): void {
       this.$emit('update:viewPasswordPrompt', false);
+    },
+    clearIntervals() {
+      for(let i = 0; i < 100; i++) {
+        window.clearInterval(i);
+      }
     }
   }
 });

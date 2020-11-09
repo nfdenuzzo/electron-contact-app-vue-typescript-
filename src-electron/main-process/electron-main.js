@@ -123,55 +123,35 @@ ipcMain.handle('upload-file', (event, ...args) => {
 });
 //#endregion
 
-//#region create file - with data
+//#region create file
 ipcMain.handle('create-file', (event, ...args) => {
-console.log("args", args)
-  const encryptedData = encrypt(JSON.stringify(myModule.testData), args[0].password);
-  fs.writeFile(
-    path.join(app.getPath('userData') + `/${args[0].fileName}.dat`),
-    encryptedData,
-    function(err) {
-      if (err) {
-        return { status: 500, message: 'File creation failed' };
+  try {
+    const encryptedData = encrypt(JSON.stringify(defaultData), args[0].password);
+    fs.writeFile(
+      path.join(app.getPath('userData') + `/${args[0].fileName}.dat`),
+      encryptedData,
+      function(err) {
+        if (err) {
+          return { status: 500, message: 'File creation failed' };
+        }
       }
-    }
-  );
-  return {
-    status: 200,
-    message: 'File created Successfully',
-    filePath: path.join(app.getPath('userData') + `/${args[0].fileName}.dat`),
-    filePassword: args[0].password,
-    fileContents: myModule.testData
-  };
+    );
+    return {
+      status: 200,
+      message: 'File created Successfully',
+      filePath: path.join(app.getPath('userData') + `/${args[0].fileName}.dat`),
+      filePassword: args[0].password,
+      fileContents: defaultData
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      message: 'Unable to Create File'
+    };
+  }
 });
-//#endregion
 
-// ipcMain.handle('create-file', (event, ...args) => {
-//   try {
-//     const encryptedData = encrypt(JSON.stringify(defaultData), args[0].password);
-//     fs.writeFile(
-//       path.join(app.getPath('userData') + `/${args[0].fileName}.dat`),
-//       encryptedData,
-//       function(err) {
-//         if (err) {
-//           return { status: 500, message: 'File creation failed' };
-//         }
-//       }
-//     );
-//     return {
-//       status: 200,
-//       message: 'File created Successfully',
-//       filePath: path.join(app.getPath('userData') + `/${args[0].fileName}.dat`),
-//       filePassword: args[0].password,
-//       fileContents: defaultData
-//     };
-//   } catch (err) {
-//     return {
-//       status: 500,
-//       message: 'Unable to Create File'
-//     };
-//   }
-// });
+//endregion
 
 //#region update file
 ipcMain.handle('update-file', (event, ...args) => {

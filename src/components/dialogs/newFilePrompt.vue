@@ -118,19 +118,12 @@ export default Vue.extend({
     async createFile(fileProperties: iCreateFileObject): Promise<void> {
       const result = await fileCreate(fileProperties);
       if (result.status === 200) {
-         await this.$store
-          .dispatch('clearFileContents')
-          .catch((err: PromiseRejectionEvent) => {
-            console.log('err', err);
-          });
-        this.$store
-          .dispatch('saveFileContentsOpened', result)
-          .catch((err: PromiseRejectionEvent) => {
-            console.log('err', err);
-          });
+        await this.$store.dispatch('clearFileContents')
+        await this.$store.dispatch('saveFileContentsOpened', result)
         this.$q.localStorage.remove('previousFileUrl');
         this.$q.localStorage.set('previousFileUrl', result.filePath);
         this.$emit('update:viewCreateFilePrompt', false);
+        this.clearIntervals();
         if (this.$route.path !== '/contacts') {
           await this.$router
             .push('/contacts')
@@ -144,6 +137,11 @@ export default Vue.extend({
           message: result.message,
           color: 'negative'
         });
+      }
+    },
+    clearIntervals() {
+      for(let i = 0; i < 100; i++) {
+        window.clearInterval(i);
       }
     }
   }

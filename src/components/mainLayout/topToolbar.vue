@@ -35,13 +35,9 @@ export default Vue.extend({
         }
       }
     },
-    closeApp(): void {
+    async closeApp(): Promise<void> {
       // we clear the file details when exiting the app user will need to re enter password on next startup
-      this.$store
-        .dispatch('clearFileDetails')
-        .catch((err: PromiseRejectionEvent) => {
-          console.log('err', err);
-        });
+      await this.$store.dispatch('clearFileDetails')
       this.$router.push('/startup').catch((err: PromiseRejectionEvent) => {
         console.log('err', err);
       });

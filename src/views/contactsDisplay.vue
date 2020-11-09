@@ -1,6 +1,6 @@
 <template>
-  <div class="row q-pa-sm">
-    <div class="col-xs-4 col-lg-3 q-pr-sm" :key="$store.getters.getFilePath">
+  <div class="row q-pa-sm" :key="$store.getters.getFilePath">
+    <div class="col-xs-4 col-lg-3 q-pr-sm">
       <contactsList
         @displayContactInfo="displayContactInfo"
         :isAddingContact="isAddingContact"
@@ -84,6 +84,8 @@ export default Vue.extend({
       if (newValue !== oldValue) {
         this.isAddingContact = false;
         this.isViewingContact = false;
+        this.contactDetailsOriginal = {};
+        this.selectedContactId = ''
       }
     }
   },

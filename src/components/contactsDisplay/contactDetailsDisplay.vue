@@ -10,6 +10,9 @@
     <q-separator />
     <div class="row q-pa-sm" v-if="isExistingContact">
       <div class="col-xs-12 text-right">
+        <span class="q-pr-sm text-caption" v-if="autoSaved">
+          Auto Saving..
+        </span>
         <span class="q-pr-sm">
           <q-btn
             flat
@@ -192,7 +195,7 @@ export type DataType = {
   viewDeleteConfirmationPrompt: boolean;
   confirmBtnLoading: boolean;
   autoSaveCountDownStarted: boolean;
-  changesHaveOccured: boolean;
+  autoSaved: boolean;
   autoSaveTimer: any
 };
 
@@ -216,7 +219,7 @@ export default Vue.extend({
   data(): DataType {
     return {
       autoSaveTimer: 0,
-      changesHaveOccured: false,
+      autoSaved: false,
       autoSaveCountDownStarted: false,
       viewDeleteConfirmationPrompt: false,
       confirmBtnLoading: false,
@@ -231,22 +234,19 @@ export default Vue.extend({
       }
     };
   },
+  mounted() {
+    this.setReadOnlyView();
+  },
+  beforeDestroy() {
+    this.setReadOnlyView();
+  },
   watch: {
     contactDetailsOriginal() {
-      if (this.contactDetailsOriginal.id !== this.contactDetails.id) {
-        this.autoSaveCountDownStarted = false;
-        window.clearInterval(this.autoSaveTimer);
-        this.isEditing = false;
-      }
+      this.setReadOnlyView();
     },
     isAddingNewContact(): void {
       if (this.isAddingContact) {
-        this.autoSaveCountDownStarted = false;
-        window.clearInterval(this.autoSaveTimer);
-        this.autoSaveTimer = <any>setInterval(async () => {
-          await this.autoSavePrep();
-        // }, 120000);
-        }, 45000);
+        this.restartAutoSaveTimer();
         this.autoSaveCountDownStarted = true;
         this.contactDetails = {
           id: uid(),
@@ -273,6 +273,20 @@ export default Vue.extend({
     }
   },
   methods: {
+    restartAutoSaveTimer(): void {
+      clearInterval(this.autoSaveTimer);
+      this.autoSaveTimer = <any>setInterval(async () => {
+        await this.autoSaveDetails();
+      }, 60000);
+    },
+    setReadOnlyView(): void {
+      if (this.contactDetailsOriginal.id !== this.contactDetails.id) {
+        this.autoSaveCountDownStarted = false;
+        clearInterval(this.autoSaveTimer);
+        this.autoSaveTimer = null;
+        this.isEditing = false;
+      }
+    },
     deleteContact(): void {
       this.viewDeleteConfirmationPrompt = true;
     },
@@ -282,7 +296,7 @@ export default Vue.extend({
       await this.contactCreateUpdate(autoSaving);
       this.confirmBtnLoading = false;
       this.viewDeleteConfirmationPrompt = false;
-      window.clearInterval(this.autoSaveTimer);
+      clearInterval(this.autoSaveTimer);
       this.$emit('deletedContact')
     },
     saveContact(): void {
@@ -314,11 +328,7 @@ export default Vue.extend({
         this.$store.getters.getFileContents
       );
       if (result && result.status === 200) {
-        await this.$store
-          .dispatch('saveFileContents', result)
-          .catch((err: PromiseRejectionEvent) => {
-            console.log('err', err);
-          });
+        await this.$store.dispatch('saveFileContents', result)
         if (!autoSaving) {
           if (this.isAddingNewContact || this.isEditingContact) {
             this.$emit('contactCreatedUpdated', this.contactDetails.id);
@@ -338,11 +348,7 @@ export default Vue.extend({
     editContactDetails(): void {
       if (!this.isEditing) {
         this.isEditing = true;
-        window.clearInterval(this.autoSaveTimer);
-        this.autoSaveTimer = <any>setInterval(async () => {
-          await this.autoSavePrep();
-        // }, 120000);
-        }, 45000);
+        this.restartAutoSaveTimer();
         this.autoSaveCountDownStarted = true;
         this.contactDetails = JSON.parse(
           JSON.stringify(this.contactDetailsOriginal)
@@ -363,7 +369,7 @@ export default Vue.extend({
         return false;
       }
     },
-    autoSavePrep: async function(): Promise<void> {
+    autoSaveDetails: async function(): Promise<void> {
       if (this.autoSaveCountDownStarted) {
         if (this.$q.localStorage.getItem('auto_save')) {
           const autoSaving = true;
@@ -377,13 +383,10 @@ export default Vue.extend({
             }
             await this.contactCreateUpdate(autoSaving);
             this.$emit('updateOriginalContactDetails', this.contactDetails.id);
-            this.$q.notify({
-              type: 'positive',
-              message: 'Auto Saved!',
-              color: 'positive',
-              position: 'bottom-right',
-              timeout: 1200
-            });
+            this.autoSaved = true;
+            setTimeout(() => {
+              this.autoSaved = false;
+            }, 3000);
           }
         }
       }
