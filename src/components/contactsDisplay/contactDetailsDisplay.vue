@@ -370,7 +370,7 @@ export default Vue.extend({
       }
     },
     autoSaveDetails: async function(): Promise<void> {
-      if (this.autoSaveCountDownStarted) {
+      if (this.autoSaveCountDownStarted && (this.isAddingNewContact || this.isEditing)) {
         if (this.$q.localStorage.getItem('auto_save')) {
           const autoSaving = true;
           if (this.contactDetails && this.contactDetails.name) {

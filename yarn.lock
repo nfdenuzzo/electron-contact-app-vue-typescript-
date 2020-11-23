@@ -4116,11 +4116,6 @@ figures@^3.0.0:
   dependencies:
     escape-string-regexp "^1.0.5"
 
-file-encryptor@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/file-encryptor/-/file-encryptor-0.1.1.tgz#506a5aba153cc109943c38fd445506a84557b9fe"
-  integrity sha1-UGpauhU8wQmUPDj9RFUGqEVXuf4=
-
 file-entry-cache@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/file-entry-cache/-/file-entry-cache-5.0.1.tgz#ca0f6efa6dd3d561333fb14515065c2fafdf439c"

@@ -135,6 +135,7 @@ export default Vue.extend({
         this.$q.notify({
           type: 'negative',
           message: result.message,
+          timeout: 2800,
           color: 'negative'
         });
       }

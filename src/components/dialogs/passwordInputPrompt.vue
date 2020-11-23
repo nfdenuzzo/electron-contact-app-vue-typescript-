@@ -112,7 +112,6 @@ export default Vue.extend({
               color: 'negative'
             });
           }
-          this.clearIntervals();
           this.btnLoading = false;
         })
         .catch((err: PromiseRejectionEvent) => console.log('errorr', err))
@@ -131,7 +130,7 @@ export default Vue.extend({
         this.$q.localStorage.remove('previousFileUrl');
         this.$q.localStorage.set('previousFileUrl', result.filePath);
         this.$emit('update:viewPasswordPrompt', false);
-
+        this.clearIntervals();
         if (this.$route.path !== '/contacts') {
           await this.$router
             .push('/contacts')
