@@ -19,7 +19,7 @@ yarn run lint
 
 ### Build the app for production
 ```bash
-quasar build
+quasar build --mode electron
 ```
 
 ### Customize the configuration
