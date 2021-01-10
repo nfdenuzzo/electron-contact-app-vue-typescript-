@@ -130,7 +130,6 @@ export default Vue.extend({
         this.$q.localStorage.remove('previousFileUrl');
         this.$q.localStorage.set('previousFileUrl', result.filePath);
         this.$emit('update:viewPasswordPrompt', false);
-        this.clearIntervals();
         if (this.$route.path !== '/contacts') {
           await this.$router
             .push('/contacts')
@@ -148,11 +147,6 @@ export default Vue.extend({
     },
     closeDialog(): void {
       this.$emit('update:viewPasswordPrompt', false);
-    },
-    clearIntervals() {
-      for(let i = 0; i < 100; i++) {
-        window.clearInterval(i);
-      }
     }
   }
 });

@@ -123,7 +123,6 @@ export default Vue.extend({
         this.$q.localStorage.remove('previousFileUrl');
         this.$q.localStorage.set('previousFileUrl', result.filePath);
         this.$emit('update:viewCreateFilePrompt', false);
-        this.clearIntervals();
         if (this.$route.path !== '/contacts') {
           await this.$router
             .push('/contacts')
@@ -138,11 +137,6 @@ export default Vue.extend({
           timeout: 2800,
           color: 'negative'
         });
-      }
-    },
-    clearIntervals() {
-      for(let i = 0; i < 100; i++) {
-        window.clearInterval(i);
       }
     }
   }
