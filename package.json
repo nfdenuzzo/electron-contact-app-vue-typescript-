@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
-    "@types/lodash": "^4.14.165",
+    "@types/lodash": "^4.14.168",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "electron-first-run": "^3.0.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "quasar": "^1.0.0"
   },
   "devDependencies": {
@@ -25,12 +25,12 @@
     "@typescript-eslint/parser": "^3.3.0",
     "babel-eslint": "^10.0.1",
     "devtron": "^1.4.0",
-    "electron": "^9.3.3",
+    "electron": "^9.4.0",
     "electron-debug": "^3.0.1",
     "electron-devtools-installer": "^3.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
-    "eslint-loader": "^3.0.3",
+    "eslint-loader": "^4.0.2",
     "eslint-plugin-vue": "^6.1.2"
   },
   "browserslist": [
