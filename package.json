@@ -16,7 +16,7 @@
     "core-js": "^3.9.1",
     "electron-first-run": "^3.0.0",
     "lodash": "^4.17.21",
-    "quasar": "^1.15.9"
+    "quasar": "^1.15.16"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
