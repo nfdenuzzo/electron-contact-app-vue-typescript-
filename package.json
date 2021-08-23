@@ -19,7 +19,7 @@
     "quasar": "^2.0.1"
   },
   "devDependencies": {
-    "@quasar/app": "^2.0.0",
+    "@quasar/app": "^3.1.0",
     "@types/node": "^16.0.0",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^3.3.0",
