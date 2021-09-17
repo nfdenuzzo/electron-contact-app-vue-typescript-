@@ -1233,10 +1233,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.0.0.tgz#067a6c49dc7a5c2412a505628e26902ae967bf6f"
   integrity sha512-TmCW5HoZ2o2/z2EYi109jLqIaPIi9y/lc2LmDCWzuCi35bcaQ+OtUh6nwBiFK7SOu25FAU5+YKdqFZUwtqGSdg==
 
-"@types/node@^12.0.12":
-  version "12.19.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.19.3.tgz#a6e252973214079155f749e8bef99cc80af182fa"
-  integrity sha512-8Jduo8wvvwDzEVJCOvS/G6sgilOLvvhn1eMmK3TW8/T217O7u1jdrK6ImKLv80tVryaPSVeKu6sjDEiFjd4/eg==
+"@types/node@^14.6.2":
+  version "14.17.17"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.17.17.tgz#4ec7b71bbcb01a4e55455b60b18b1b6a783fe31d"
+  integrity sha512-niAjcewgEYvSPCZm3OaM9y6YQrL2SEPH9PymtE6fuZAvFiP6ereCcvApGl2jKTq7copTIguX3PBvfP08LN4LvQ==
 
 "@types/q@^1.5.1":
   version "1.5.4"
@@ -7573,10 +7573,10 @@ qs@~6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
-quasar@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/quasar/-/quasar-2.0.1.tgz#31119684cc7a1b918c28c34aa910cc05c2a05299"
-  integrity sha512-DDxcuEardFvebCTNeGeneS/3NazY9ZqNPII9o2VC/ujZn7/hIWDsB0ajYJG8l/pV8kkiaiaIBaE93EzoXfEXrA==
+quasar@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/quasar/-/quasar-2.1.0.tgz#c5524257f575c74297332a24b5004503787681fa"
+  integrity sha512-TSAAoHrRYNYcSO0zEz3yqYA00Blfwzt8tl7o3/fVyLD6XRrePwB3K0P3ATTQEWISTIUkSklXo5d/c5oXlAQO+g==
 
 query-string@^4.1.0:
   version "4.3.4"
