@@ -1075,10 +1075,10 @@
     core-js "^3.6.5"
     core-js-compat "^3.6.5"
 
-"@quasar/extras@^1.10.8":
-  version "1.10.8"
-  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.10.8.tgz#250a0b4d75f8a8085318fc1059000c7d24bb813d"
-  integrity sha512-s/uTQ/NVQIExOZjXJ0LnpPlqiiuGV0PFw5UKbXypWMhPpfQInnic/uU3SR8ZGtlNC3KHV5U+NTk9K9muTtoDpA==
+"@quasar/extras@^1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.11.1.tgz#c04035a38eedf6ed6e40dbe629a6b9cd3c4a29f4"
+  integrity sha512-/h6EH4+7peanrgT1ErTSG2KwHuVrpnvS3lkmtuErCXrdpiV0z0DpGxdfIjsbhKqAPkAb6h5Zsdh72nBdKp1tsg==
 
 "@quasar/fastclick@1.1.4":
   version "1.1.4"
@@ -1233,10 +1233,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.0.0.tgz#067a6c49dc7a5c2412a505628e26902ae967bf6f"
   integrity sha512-TmCW5HoZ2o2/z2EYi109jLqIaPIi9y/lc2LmDCWzuCi35bcaQ+OtUh6nwBiFK7SOu25FAU5+YKdqFZUwtqGSdg==
 
-"@types/node@^12.0.12":
-  version "12.19.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.19.3.tgz#a6e252973214079155f749e8bef99cc80af182fa"
-  integrity sha512-8Jduo8wvvwDzEVJCOvS/G6sgilOLvvhn1eMmK3TW8/T217O7u1jdrK6ImKLv80tVryaPSVeKu6sjDEiFjd4/eg==
+"@types/node@^14.6.2":
+  version "14.17.18"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.17.18.tgz#0198489a751005f71217744aa966cd1f29447c81"
+  integrity sha512-haYyibw4pbteEhkSg0xdDLAI3679L75EJ799ymVrPxOA922bPx3ML59SoDsQ//rHlvqpu+e36kcbR3XRQtFblA==
 
 "@types/q@^1.5.1":
   version "1.5.4"
